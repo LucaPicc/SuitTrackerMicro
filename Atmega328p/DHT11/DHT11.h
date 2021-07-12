@@ -1,14 +1,4 @@
 
-/*
-DHT11 Library 0x01
-copyright (c) Davide Gironi, 2011
-Released under GPLv3.
-Please refer to LICENSE file for licensing information.
-References:
-  - DHT-11 Library, by Charalampos Andrianakis on 18/12/11
-*/
-
-
 #ifndef DHT11_H_
 #define DHT11_H_
 
@@ -16,12 +6,12 @@ References:
 #include <avr/io.h>
                                                         
 //setup parameters
-#define DHT11_DDR DDRB 
-#define DHT11_PORT PORTB
-#define DHT11_PIN PINB 
-#define DHT11_INPUTPIN PB0
+#define DHT_DDR DDRB 
+#define DHT_PORT PORTB
+#define DHT_PIN PINB 
+#define PIN PB0
                          
-extern int8_t dht11_gettemperature();
-extern int8_t dht11_gethumidity();
+void DHT11_init(void);
+uint8_t DHT11_read(float *dht_temperature, float *dht_humidity)
 
 #endif
