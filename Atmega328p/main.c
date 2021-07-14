@@ -14,38 +14,40 @@ char interrupcion = 0;
 
 
 int main(){
-	
-	uint8_t rawhumidity,rawtemperature;
 	float temperature, humidity;
-	char bufor[8]; 
-
+	uint8_t status;
+	
+	DHT11_init();
 	USART_init();
-	DDRB |= (1<<DDB5);
-	PORTB |= (1<<PORTB5);
+
+	/* DDRB |= (1<<DDB5);
+	PORTB |= (1<<PORTB5); */
 
 
 	while (1){
 		
-		rawtemperature = dht11_gettemperature;
-		temperature = (float)(rawtemperature)/10.0;
-		rawhumidity = dht11_gethumidity;
-		rawhumidity = (float)(rawhumidity)/10.0;
+		status = DHT11_read(&temperature, &humidity);
 
-		dtostrf(rawtemperature,2,2,String);
-		USART_putstring("Temperatura:\t");
-		USART_putstring(String);
-		//USART_putstring("C");
-		USART_putstring("\n");
-		
-		dtostrf(rawhumidity,2,2,String);
-		USART_putstring("Humedad:\t");
-		USART_putstring(String);
-		//USART_putstring("%");
-		USART_putstring("\n");	
+		if(status==1){
+			dtostrf(temperature,2,2,String);
+			
+			USART_putstring("Temperatura:\t");
+			USART_putstring(String);
+			//USART_putstring("C");
+			USART_putstring("\n");
+			
+			dtostrf(humidity,2,2,String);
+			
+			USART_putstring("Humedad:\t");
+			USART_putstring(String);
+			//USART_putstring("%");
+			USART_putstring("\n");	
+		}else{
+			USART_putstring("ERROR!!!\n");
+		}
 		
 		_delay_ms(2000);
 	}
-
 
 	return 0;
 }

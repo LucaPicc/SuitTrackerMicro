@@ -6,7 +6,7 @@
 #/
 
 
-PROJECT_NAME	= PROYECTOFINAL
+PROJECT_NAME	= TrackerSuite
 
 ## Información del micro en cuestion
 
