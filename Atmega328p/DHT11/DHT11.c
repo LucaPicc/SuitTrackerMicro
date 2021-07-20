@@ -22,7 +22,7 @@ void DHT11_init(void){
             |     humidity    |   temperature   |  check |
 
         pulse:
-                           26-28 or 70 us
+                50us      26-28 or 70 us
             |____________|'''''''''''''''|
 
             if pulse width between 26 28us, byte is low

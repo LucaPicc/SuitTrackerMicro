@@ -6,10 +6,10 @@
     #include <avr/io.h>
                                                             
     //setup parameters
-    #define DHT_DDR DDRB 
-    #define DHT_PORT PORTB
-    #define DHT_PIN PINB 
-    #define PIN PB0
+    #define DHT_DDR DDRD 
+    #define DHT_PORT PORTD
+    #define DHT_PIN PIND 
+    #define PIN 2
                             
     void DHT11_init(void);
     uint8_t DHT11_read(float *dht_temperature, float *dht_humidity);
